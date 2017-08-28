@@ -238,7 +238,7 @@ const countSmileys = arr => {
     console.log(newArr)
     return arrLength
 }
-
+bhjh
 'https://www.codewars.com/kata/convert-string-to-camel-case'
 
 const toCamelCase = (str) => {
@@ -253,3 +253,17 @@ const toCamelCase = (str) => {
     return strMatch
 }
 
+----------------------------------------------------------------------------------------;
+
+'DZIŚ :)'
+
+
+'https://www.codewars.com/kata/repeatit/train/javascript'
+
+
+const repeatIt = (str, n) => nCheck(n) ? "" : strCheck(str) ? "Not a string" : strRepeater(str, n)
+const strCheck = str => typeof str !== "string"
+const nCheck = n => n === 0
+const strRepeater = (str, n) => str.toString().repeat(n)
+
+''
