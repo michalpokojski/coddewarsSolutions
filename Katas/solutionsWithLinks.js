@@ -266,4 +266,89 @@ const strCheck = str => typeof str !== "string"
 const nCheck = n => n === 0
 const strRepeater = (str, n) => str.toString().repeat(n)
 
-''
+'https://www.codewars.com/kata/length-of-missing-array/train/javascript'
+
+const getLengthOfMissingArray = array => {
+    const map = array === null ? 0 : array.map(x => x !== null ? x.length : 0)
+    const sorted = map === 0 ? 0 : map.sort((a,b) => a-b)
+    const checker = sorted === 0 ? 0 : sorted.filter((x,i,a) => (a[i] - a[i - 1]) !== 1)
+    if (sorted === 0)
+        return 0
+    return sorted.includes(0) ? 0 : checker[1] - 1 || 0
+}
+
+
+
+'https://www.codewars.com/kata/stringy-strings/javascript'
+
+const stringy = size => {
+    const array = Array.from({length: size}).map((x,i) => i%2).map(x => x ? 0 : 1)
+    return array.join("")
+}
+
+'https://www.codewars.com/kata/pre-fizzbuzz-workout-number-1'
+
+const preFizz = n => Array.from({length: n}).map((_, i) => i+1)
+
+'https://www.codewars.com/kata/zipwith'
+
+const zipWith = (fn,a0,a1) => {
+    const sortedArr = [[...a0], [...a1]]
+    sortedArr[0] = sortedArr[0].slice(0,sortedArr[1].length)
+    const length = sortedArr[0].length
+    const arrOfPairs = Array.from({ length }).map(
+        (item, x) => Array.from({ length: sortedArr.length }).map(
+            (_, y) => sortedArr[y][x]
+        )
+    )
+    const applyFn = arrOfPairs.reduce((c, p) => {
+        c.push(fn(p[0], p[1]))
+        return c
+    },[])
+    const filtered = applyFn.filter(x => x !== isNaN)
+    return filtered
+}
+
+
+--------------------------------------------------------------------------;
+
+'https://www.codewars.com/kata/strings-strings-strings-easy'
+
+
+Array.prototype.toString = function(){
+    var ret = "[";
+    for (var prop in this)
+        ret += this[prop] + ","
+    return (ret + "]").replace(/,]/g, ']')
+}
+
+Boolean.prototype.toString = function(){
+    return this + ''
+}
+
+Number.prototype.toString = function() {
+    return this + ''
+}
+
+
+'https://www.codewars.com/kata/coding-meetup-number-9-higher-order-functions-series-is-the-meetup-age-diverse/javascript'
+
+
+
+const ageCreator = (n, age) => Array.from({length: n}).map((_, i) => i + age)
+const diverseList = [ageCreator(19, 1),
+    ageCreator(10, 20),
+    ageCreator(10, 30),
+    ageCreator(10, 40),
+    ageCreator(10, 50),
+    ageCreator(10, 60),
+    ageCreator(10, 70),
+    ageCreator(10, 80),
+    ageCreator(10, 90),
+    ageCreator(100, 100)]
+const isAgeDiverse = list => {
+    const listOfAges = list.map(x => x.age)
+
+    const check = diverseList.map(x => x.some(y => listOfAges.includes(y)))
+    return check.every(y => y === true)
+}
