@@ -364,3 +364,17 @@ const askForMissingDetails = list => {
     })
     return newArr
 }
+
+'https://www.codewars.com/kata/coding-meetup-number-13-higher-order-functions-series-is-the-meetup-language-diverse'
+
+const isLanguageDiverse = list => {
+    const newList = list.map(x => x.language)
+    const languages = [...new Set(newList)]
+    const howManyOfEach = list.reduce((arr, b) => {
+        b.language === languages[0] ? arr[0]++ : b.language === languages[1] ? arr[1]++ : arr[2]++
+        return arr
+    } ,[0,0,0])
+    const sortedHowMany = howManyOfEach.sort((a,b) => a < b)
+    const answer = sortedHowMany[0] / sortedHowMany[2] <= 2 ? true : false
+    return answer
+}
