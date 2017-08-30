@@ -352,3 +352,15 @@ const isAgeDiverse = list => {
     const check = diverseList.map(x => x.some(y => listOfAges.includes(y)))
     return check.every(y => y === true)
 }
+
+'https://www.codewars.com/kata/coding-meetup-number-16-higher-order-functions-series-ask-for-missing-details'
+
+const askForMissingDetails = list => {
+    const keysArr = Object.keys(list[0])
+    const newArr = list.map(x => {
+        const value = keysArr.filter(y => x[y] === null)[0]
+        x.question = `Hi, could you please provide your ${value}.`
+        return x
+    })
+    return newArr
+}
